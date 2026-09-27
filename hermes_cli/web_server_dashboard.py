@@ -249,6 +249,10 @@ _BUILTIN_DASHBOARD_THEMES = [
     {"name": "rose",      "label": "Rosé",           "description": "Soft pink and warm ivory — easy on the eyes"},
 ]
 
+# AEGIS theme pack (hermes_cli/aegis_themes.py).
+from hermes_cli.aegis_themes import AEGIS_DASHBOARD_THEMES as _AEGIS_THEMES  # noqa: E402
+_BUILTIN_DASHBOARD_THEMES += _AEGIS_THEMES
+
 
 def _parse_theme_layer(value: Any, default_hex: str, default_alpha: float = 1.0) -> Optional[Dict[str, Any]]:
     """Normalise a theme layer spec (bare hex shorthand or ``{hex, alpha}`` dict); ``None`` on

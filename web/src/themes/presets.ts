@@ -1,5 +1,6 @@
 import { parseColor, THEME_PRESET_PALETTES, type ThemePresetPalette } from "@hermes/shared";
 import type { DashboardTheme, ThemePalette, ThemeTypography, ThemeLayout } from "./types";
+import { AEGIS_THEMES } from "./aegis";
 
 /**
  * Built-in dashboard themes.
@@ -252,4 +253,6 @@ export const BUILTIN_THEMES: Record<string, DashboardTheme> = {
   mono: monoTheme,
   cyberpunk: cyberpunkTheme,
   rose: roseTheme,
+  // AEGIS theme pack (web/src/themes/aegis.ts).
+  ...AEGIS_THEMES,
 };
