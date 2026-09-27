@@ -1,4 +1,6 @@
 import type { DashboardTheme, ThemeLayout, ThemeTypography } from "./types";
+// Self-hosted Great Vibes + IM Fell English for Regalia (OFL, see ./fonts).
+import "./aegis-fonts.css";
 
 /**
  * AEGIS theme pack.
@@ -21,10 +23,10 @@ const SANS = '"Segoe UI Variable", "Segoe UI", system-ui, -apple-system, Roboto,
 const MONO = 'ui-monospace, "Cascadia Mono", "SF Mono", Menlo, Consolas, monospace';
 const SERIF = '"Iowan Old Style", "Palatino Linotype", Georgia, serif';
 
-/** One Google Fonts sheet for the two typographic themes. Offline, both fall
- *  back to the local serif stack above, so no theme depends on the network. */
-const AEGIS_FONT_URL =
-  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=IM+Fell+English:ital@0;1&family=Tangerine:wght@400;700&display=swap";
+/** Fraunces for Sandstone comes from Google Fonts and falls back to the local
+ *  serif stack offline. Regalia's faces are self-hosted (aegis-fonts.css). */
+const SANDSTONE_FONT_URL =
+  "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap";
 
 const TYPE: ThemeTypography = {
   fontSans: SANS,
@@ -135,20 +137,25 @@ export const aegisAmber = build(
 );
 
 export const aegisRegalia = build(
-  "aegis-regalia", "AEGIS Regalia", "Gold lettering on deep burgundy, with a cursive display face.",
+  "aegis-regalia", "AEGIS Regalia", "Gold lettering on deep burgundy, with Great Vibes calligraphy.",
   { bg: "#3a0f1a", panel: "#4a1622", panelSoft: "#5a1e2c", ink: "#ecd9a0", muted: "#c9a86f",
     gold: "#e6c34d", onAccent: "#2a0a13", green: "#b8c07a", red: "#e8a06a", line: "#6a2434" },
   {
     typography: {
       ...TYPE,
       fontSans: `"IM Fell English", ${SERIF}`,
-      fontDisplay: `"Tangerine", "IM Fell English", "Snell Roundhand", cursive`,
-      fontUrl: AEGIS_FONT_URL,
+      fontDisplay: `"Great Vibes", "Snell Roundhand", "Segoe Script", cursive`,
       baseSize: "16px",
     },
     customCSS: `
-      h1, h2 { font-family: var(--theme-font-display); font-weight: 700; letter-spacing: 0; }
-      h1 { font-size: 2.4em; }
+      h1, h2 { font-family: var(--theme-font-display); font-weight: 400; letter-spacing: 0; line-height: 1.25; }
+      h1 { font-size: 2.6em; }
+      h2 { font-size: 1.9em; }
+      /* IM Fell sets old-style figures; readings and counts read better lining. */
+      .aegis-tile strong, .aegis-readout small, .aegis-mission-status, .aegis-feed-meta, .aegis-feed-row time,
+      .aegis-task-meta, .aegis-agent-meta {
+        font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+      }
     `,
   },
 );
@@ -158,7 +165,7 @@ export const aegisSandstone = build(
   { bg: "#f6f1e7", panel: "#fffdf8", panelSoft: "#efe7d6", ink: "#3a2c1d", muted: "#7c6a54",
     gold: "#a8642a", onAccent: "#ffffff", green: "#5c7a4a", red: "#b1503a", line: "#d8ccb4" },
   {
-    typography: { ...TYPE, fontDisplay: `"Fraunces", ${SERIF}`, fontUrl: AEGIS_FONT_URL },
+    typography: { ...TYPE, fontDisplay: `"Fraunces", ${SERIF}`, fontUrl: SANDSTONE_FONT_URL },
     terminalBackground: "#fffdf8",
     customCSS: `h1, h2, h3 { font-family: var(--theme-font-display); letter-spacing: -0.02em; }`,
   },

@@ -14,6 +14,7 @@ in two one-line hooks, so you can keep merging Hermes updates.
 |---|---|
 | `plugins/aegis/dashboard/` | Dashboard plugin: the **Mission Control** tab (`/mission`), the boot screen and the HUD overlay |
 | `web/src/themes/aegis.ts` | The seven AEGIS themes (Obsidian, Porcelain, Midnight, Amber, Regalia, Sandstone, Nebula) |
+| `web/src/themes/aegis-fonts.css`, `web/src/themes/fonts/` | Self-hosted Great Vibes and IM Fell English for Regalia (SIL OFL, unmodified, licences included) |
 | `web/src/themes/aegis.test.ts` | Legibility checks for every AEGIS theme |
 | `hermes_cli/aegis_themes.py` | Backend list of the AEGIS themes, so the theme picker shows them |
 | `web/src/themes/presets.ts` | **Upstream file, 2-line hook:** spreads `AEGIS_THEMES` into `BUILTIN_THEMES` |
